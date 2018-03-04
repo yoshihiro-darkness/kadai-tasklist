@@ -19,11 +19,11 @@
 
 	{!! Form::model($tasklist, ['route' => 'tasklists.store']) !!}
 
-		{!! Form::label('title', 'タイトル：') !!}
-		{!! Form::text('title') !!}
-
 		{!! Form::label('content', 'タスク：') !!}
 		{!! Form::text('content') !!}
+
+                {!! Form::label('status', 'ステータス：') !!}
+                {!! Form::text('status') !!}
 
 		{!! Form::submit('登録') !!}
 
