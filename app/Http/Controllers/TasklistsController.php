@@ -49,6 +49,7 @@ class TasklistsController extends Controller
     {
 
 	$this->validate($request, [
+		'title' => 'required|max:255', //added
 		'content' => 'required|max:255',
 	]);
 
@@ -99,6 +100,7 @@ class TasklistsController extends Controller
     public function update(Request $request, $id)
     {
 	$this->validate($request, [
+		'title' => 'required|max:255', //added
 		'content' => 'required|max:255',
 	]);
 
