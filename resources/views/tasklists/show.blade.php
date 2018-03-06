@@ -12,7 +12,7 @@
 	{!! link_to_route('tasklists.edit', 'このタスク編集', ['id' => $tasklist->id]) !!}
 
 	{!! Form::model($tasklist, ['route' => ['tasklists.destroy', $tasklist->id], 'method' => 'delete']) !!}
-		{!! Form::submit('削除') !!}
+		{!! Form::submit('削除', ['class' => 'btn btn-danger']) !!}
 	{!! Form::close() !!}
 
 @endsection
