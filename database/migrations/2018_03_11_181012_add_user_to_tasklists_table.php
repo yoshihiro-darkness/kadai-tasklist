@@ -13,7 +13,8 @@ class AddUserToTasklistsTable extends Migration
     public function up()
     {
         Schema::table('tasklists', function (Blueprint $table) {
-           	//$table->integer('user_id')->unsigned()->index();
+           	$table->integer('user_id')->unsigned()->index();
+           	//$table->integer('user_id')->index();
 		//外部キー制約
 		$table->foreign('user_id')->references('id')->on('users');
         });
