@@ -85,11 +85,18 @@ class TasklistsController extends Controller
      */
     public function show($id)
     {
+		$user = \Auth::user(); //add
         $tasklist = Tasklist::find($id);
+		//dd($tasklist);
+		if( $user->id == $tasklist->user_id) {
 
-	return view('tasklists.show', [
-		'tasklist' => $tasklist,
-	]);
+			return view('tasklists.show', [
+			'tasklist' => $tasklist,
+			]);
+		} else {
+			//echo "Have a good night!";	
+			return redirect('/'); 
+		}
     }
 
     /**
@@ -100,11 +107,17 @@ class TasklistsController extends Controller
      */
     public function edit($id)
     {
+		$user = \Auth::user(); //add
        	$tasklist = Tasklist::find($id);
 
-	return view('tasklists.edit', [
-		'tasklist' => $tasklist,
-	]); 
+		if( $user->id == $tasklist->user_id) {
+			return view('tasklists.edit', [
+			'tasklist' => $tasklist,
+			]);
+		} else {
+			return redirect('/'); 
+		}
+ 
     }
 
     /**
@@ -137,9 +150,13 @@ class TasklistsController extends Controller
      */
     public function destroy($id)
     {
+		$user = \Auth::user(); //add
        	$tasklist = Tasklist::find($id);
-	$tasklist->delete();
 
-	return redirect('/'); 
+		if( $user->id == $tasklist->user_id) {
+			$tasklist->delete();
+		}
+
+		return redirect('/'); 
     }
 }

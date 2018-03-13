@@ -18,7 +18,7 @@ Route::get('/', 'TasklistsController@index');
 
 //Route::get('/', 'WelcomeController@index');
 
-Route::resource('tasklists', 'TasklistsController');
+//Route::resource('tasklists', 'TasklistsController');
 
 //ユーザ登録
 Route::get('signup', 'Auth\AuthController@getRegister')->name('signup.get');
@@ -31,5 +31,5 @@ Route::get('logout', 'Auth\AuthController@getLogout')->name('logout.get');
 
 // ログイン認証付き
 Route::group(['middleware' => 'auth'], function() {
-	Route::resource('tasklists', 'TasklistsController', ['only' => ['index', 'create', 'edit', 'show']]);
+	Route::resource('tasklists', 'TasklistsController', ['only' => ['index', 'create', 'edit', 'show', 'destroy']]);
 });
